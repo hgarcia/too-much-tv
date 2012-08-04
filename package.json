@@ -1,0 +1,14 @@
+{
+  "name": "too-much-tv",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "connect-assets": "",
+    "express": "",
+    "mongoose": "",
+    "less": "",
+    "hbs": "",
+    "passport": "",
+    "underscore": ""
+  }
+}
