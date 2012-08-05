@@ -1,5 +1,15 @@
 /* Artfully masterminded by ZURB  */
 
+.head-container {
+    padding: 50px 0;
+}
+.head-container h1 {
+    font-family: 'Dorsa', sans-serif;
+}
+.sign-in-form {
+    padding: 14px 0;
+}
+
 /* -------------------------------------------------- 
    Table of Contents
 -----------------------------------------------------
