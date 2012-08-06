@@ -4672,9 +4672,10 @@ function $ExceptionHandlerProvider() {
  * Used for configuring the interpolation markup. Deafults to `{{` and `}}`.
  */
 function $InterpolateProvider() {
-  var startSymbol = '{{';
-  var endSymbol = '}}';
-
+//  var startSymbol = '{{';
+//  var endSymbol = '}}';
+    var startSymbol = '[[';
+    var endSymbol = ']]';
   /**
    * @ngdoc method
    * @name ng.$interpolateProvider#startSymbol

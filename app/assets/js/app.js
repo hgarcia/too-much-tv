@@ -1,35 +1,41 @@
-(function($){  
-  $(function(){
-    
-    $(document).foundationAlerts();
-    $(document).foundationAccordion();
-    $(document).tooltips();
-    $('input, textarea').placeholder();
-    
-    
-    
-    $(document).foundationButtons();
-    
-    
-    
-    $(document).foundationNavigation();
-    
-    
-    
-    $(document).foundationCustomForms();
-    
-    
-    
-      
-    $(document).foundationTabs({callback:$.foundation.customForms.appendCustomMarkup});
-      
-    
-    
-    // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
-    // $('.block-grid.two-up>li:nth-child(2n+1)').css({clear: 'left'});
-    // $('.block-grid.three-up>li:nth-child(3n+1)').css({clear: 'left'});
-    // $('.block-grid.four-up>li:nth-child(4n+1)').css({clear: 'left'});
-    // $('.block-grid.five-up>li:nth-child(5n+1)').css({clear: 'left'});
-  });
-  
-})(jQuery);
+$(document).ready(function () {
+  $('ul.nav-bar li').each(function () {
+    var ele = $(this);
+    if (!ele.hasClass('name')) {
+      $(this).click(function () {
+        $('ul.nav-bar li.active').removeClass('active');
+        $(this).addClass('active');
+      });
+    }
+  }) ;
+});
+
+angular.module('tooMuchTv', []).
+  config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+    when('/unwatched', {templateUrl: '../partials/unwatched.htm', controller: UnwatchedCtrl}).
+    when('/upcoming', {templateUrl: '../partials/upcoming.htm', controller: UpcomingCtrl}).
+    when('/shows', {templateUrl: '../partials/show-list.htm', controller: ShowListCtrl}).
+    when('/shows/:showId', {templateUrl: '../partials/show-details.htm', controller: ShowDetailCtrl}).
+    otherwise({redirectTo: '/unwatched'});
+}]);
+
+function UnwatchedCtrl($scope) {
+  $scope.shows = [
+    {"name": "Perception", "episode": "5"},
+    {"name": "Suits", "episode": "6"},
+    {"name": "Suits", "episode": "6"}
+  ];
+}
+
+function UpcomingCtrl($scope) {
+
+}
+
+function ShowListCtrl($scope) {
+
+}
+
+function ShowDetailCtrl($scope) {
+
+}

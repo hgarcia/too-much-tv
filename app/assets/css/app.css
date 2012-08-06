@@ -3,9 +3,24 @@
 .head-container {
     padding: 50px 0;
 }
-.head-container h1 {
+
+.head-container h1, .name a {
     font-family: 'Dorsa', sans-serif;
 }
+
+ul.nav-bar > li.name > a {
+    font-size: 40px;
+}
+.nav-bar > li.active {
+    background: none repeat scroll 0 0 #333333;
+    border-color: #333333 #333333 #2284A1;
+    border-width: 0 0 2px;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
 .sign-in-form {
     padding: 14px 0;
 }

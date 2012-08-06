@@ -1,5 +1,22 @@
+<div ng-app="tooMuchTv">
+    <ul class="nav-bar no-margin">
+        <li class="name">
+            <a href="/app">Too much TV</a>
+        </li>
+        <li class="active">
+            <a href="#/unwatched">Un-watched</a>
+        </li>
+        <li>
+            <a href="#/shows">Shows</a>
+        </li>
+        <li>
+            <a href="#/upcoming">Upcoming</a>
+        </li>
+    </ul>
 
-
+    <div ng-view></div>
+</div>
 {{#extend "scripts"}}
+{{{js "jquery.js"}}}
 {{{js "app.js"}}}
 {{/extend}}
