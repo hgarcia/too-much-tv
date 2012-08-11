@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $(document).foundationCustomForms();
+
   $('ul.nav-bar li').each(function () {
     var ele = $(this);
     if (!ele.hasClass('name')) {
@@ -22,9 +24,9 @@ angular.module('tooMuchTv', []).
 
 function UnwatchedCtrl($scope) {
   $scope.shows = [
-    {"name": "Perception", "episode": "5"},
-    {"name": "Suits", "episode": "6"},
-    {"name": "Suits", "episode": "6"}
+    {"id": 1, "name": "Perception", "season": 1, "episode": "5"},
+    {"id": 2, "name": "Suits",  "season": 2, "episode": "6"},
+    {"id": 3, "name": "White Collar",  "season": 3, "episode": "5"}
   ];
 }
 
@@ -33,7 +35,11 @@ function UpcomingCtrl($scope) {
 }
 
 function ShowListCtrl($scope) {
-
+  $scope.shows = [
+    {"id": 1, "name": "Perception", "description": "Some description here."},
+    {"id": 2, "name": "Suits", "description": "Some description here."},
+    {"id": 3, "name": "White Collar", "description": "Some description here."}
+  ];
 }
 
 function ShowDetailCtrl($scope) {

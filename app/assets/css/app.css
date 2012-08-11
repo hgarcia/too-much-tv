@@ -8,6 +8,10 @@
     font-family: 'Dorsa', sans-serif;
 }
 
+ul.nav-bar {
+    margin-bottom: 20px;
+}
+
 ul.nav-bar > li.name > a {
     font-size: 40px;
 }
@@ -17,8 +21,8 @@ ul.nav-bar > li.name > a {
     border-width: 0 0 2px;
 }
 
-.no-margin {
-    margin: 0 !important;
+.no-margin-top {
+    margin-top: 0 !important;
 }
 
 .sign-in-form {
