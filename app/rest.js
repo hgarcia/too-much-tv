@@ -3,10 +3,14 @@ var config = require('./config').CONFIG.DBS.main;
 
 function result(res, success, error) {
   return function (err, result) {
+    console.log(err);
+    console.log(result);
     if (err) {
       res.send(error, err);
     } else if (result) {
       res.send(success, result);
+    } else if (result === undefined) {
+      res.send(success);
     } else {
       res.send(404);
     }
@@ -15,14 +19,14 @@ function result(res, success, error) {
 
 module.exports = {
   shows: function () {
-    var dbs = db.create(config).collection('show');
+    var dbs = db.create(config).collection('shows');
     return {
       single: function (req, res) {
         var id = req.params.id;
-        dbs.findById(id, result(res, 200, 404));
+        dbs.findById({"_id": db.ID(id)}, result(res, 200, 404));
       },
       list: function (req, res) {
-        dbs.find().toArray(result(res, 200, 404));
+        dbs.find().sort({"name": 1}).toArray(result(res, 200, 404));
       },
       save: function (req, res) {
         var show = req.body;
@@ -30,7 +34,7 @@ module.exports = {
       },
       remove: function (req, res) {
         var id = req.params.id;
-        dbs.remove(id, result(res, 204, 204));
+        dbs.remove({"_id": db.ID(id)}, result(res, 204, 204));
       }
     };
   }

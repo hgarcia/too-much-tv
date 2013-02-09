@@ -35,27 +35,26 @@ function UpcomingCtrl($scope) {
 }
 
 function ShowListCtrl($scope, $http) {
-  $scope.show = {};
+  // $scope.show = {};
   $http.get('/shows').success(function (data) {
     $scope.shows = data;
   });
-  $scope.save = function () {
-    $http.post('/show', this.show).success(function (data) {
+  $scope.save = function (show) {
+    $http.post('/show', show).success(function (data) {
       $scope.shows.push(data);
-      return false;
+      show.name = "";
+      show.details = "";
     });
   }
+  $scope.remove = function (show) {
+    $http.delete('/show/' + show._id).success(function (data) {
+      var index = $scope.shows.indexOf(show);
+      $scope.shows.splice(index, 1);
+    });
+  }
+  $scope.orderProp = "name";
 }
 
-// function NewShowCtrl($scope, $http) {
-//   $scope.show = {};
-//   // $scope.save = function () {
-//   //   $http.post('/show', this.show).success(function (data) {
-//   //     console.log(data);
-//   //     return false;
-//   //   });
-//   // }
-// }
 
 function ShowDetailCtrl($scope, $http) {
   $http.get('/show/:id').success(function (data) {

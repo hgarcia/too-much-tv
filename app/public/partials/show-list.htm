@@ -1,11 +1,24 @@
 <div ng-controller="ShowListCtrl">
-    <form class="custom" ng-submit="save()">
+    <form class="custom section-breath" ng-submit="save(show)">
         <div class="row">
             <div class="twelve columns">
-                <label for="name">Series name:</label>
+                <label for="name">Show name:</label>
                 <input ng-model="show.name" id="name" type="text" name="name" placeholder="Name"/>
             </div>
         </div>
+        <div class="row">
+            <div class="twelve columns">
+                <label for="details">Details:</label>
+                <textarea ng-model="show.details" id="details" name="details"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <input type="submit" class="button small radius" name="addShow" value="Add"/>
+            </div>
+        </div>
+    </form>
+    <!--
         <div class="row">
             <div class="three columns">
                 <label for="season">Season:</label><input id="season" ng-model="show.season" type="text" name="season"/>
@@ -43,25 +56,17 @@
                 <input id="startDate" type="text" name="startDate" placeholder="mm/dd/yyyy"/>
             </div>
         </div>
-        <div class="row">
-            <div class="twelve columns">
-                <label for="details">Details:</label>
-                <textarea id="details" name="details"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="twelve columns">
-                <input type="submit" class="button small radius" name="addShow" value="Add"/>
-            </div>
-        </div>
-    </form>
-    <br/>
+    -->
     <div class="row">
         <div class="twelve columns">
-            <h3>Shows</h3>
-           <ul>
-               <li ng-repeat="show in shows">
-                   <a href="#/shows/[[show._id]]">[[show.name]]</a> - [[show.season]]
+           <ul class="show-list">
+               <li class="show-list-item section-breath" ng-repeat="show in shows | orderBy:orderProp">
+                    <h3><a href="#/shows/[[show._id]]">[[show.name]]</a></h3>
+                    <p>[[show.details]]</p>
+                    <div class="item-actions align-right">
+                        <a class="icon-list" ng-model="show._id"></a>
+                        <a class="icon-remove" ng-click="remove(show)"></a>
+                    </div>
                </li>
            </ul>
        </div>
