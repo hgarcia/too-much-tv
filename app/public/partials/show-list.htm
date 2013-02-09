@@ -1,15 +1,14 @@
-<div class="row">
-    <div class="eight columns centered">
-        <form class="custom">
+<div ng-controller="ShowListCtrl">
+    <form class="custom" ng-submit="save()">
         <div class="row">
             <div class="twelve columns">
                 <label for="name">Series name:</label>
-                <input id="name" type="text" name="name" placeholder="Name"/>
+                <input ng-model="show.name" id="name" type="text" name="name" placeholder="Name"/>
             </div>
         </div>
         <div class="row">
             <div class="three columns">
-                <label for="season">Season:</label><input id="season" type="text" name="season"/>
+                <label for="season">Season:</label><input id="season" ng-model="show.season" type="text" name="season"/>
             </div>
             <div class="three columns">
                 <label for="episodeQty"># of episodes:</label><input id="episodeQty" type="text" name="episodeQty"/>
@@ -25,11 +24,6 @@
                     <option value="friday">Friday</option>
                     <option value="saturday">Saturday</option>
                 </select>
-                <!--select style="display:none;" id="customDropdown">
-                    <option SELECTED>This is a dropdown</option>
-                    <option>This is another option</option>
-                    <option>Look, a third option</option>
-                </select-->
                 <div class="custom dropdown">
                     <a href="#" class="current">Sunday</a>
                     <a href="#" class="selector"></a>
@@ -55,22 +49,20 @@
                 <textarea id="details" name="details"></textarea>
             </div>
         </div>
-        </form>
         <div class="row">
             <div class="twelve columns">
-                <input type="button" class="button small radius" name="addShow" value="Add"/>
+                <input type="submit" class="button small radius" name="addShow" value="Add"/>
             </div>
         </div>
-        <br/>
-        <div class="row">
-            <div class="twelve columns">
-                <h3>Shows</h3>
-               <ul ng-controller="ShowListCtrl">
-                   <li ng-repeat="show in shows">
-                       <a href="#/shows/[[show.id]]">[[show.name]]</a> - [[show.episode]]
-                   </li>
-               </ul>
-           </div>
+    </form>
+    <br/>
+    <div class="row">
+        <div class="twelve columns">
+            <h3>Shows</h3>
+           <ul>
+               <li ng-repeat="show in shows">
+                   <a href="#/shows/[[show._id]]">[[show.name]]</a> - [[show.season]]
+               </li>
+           </ul>
        </div>
     </div>
-</div>

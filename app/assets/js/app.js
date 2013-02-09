@@ -34,14 +34,31 @@ function UpcomingCtrl($scope) {
 
 }
 
-function ShowListCtrl($scope) {
-  $scope.shows = [
-    {"id": 1, "name": "Perception", "description": "Some description here."},
-    {"id": 2, "name": "Suits", "description": "Some description here."},
-    {"id": 3, "name": "White Collar", "description": "Some description here."}
-  ];
+function ShowListCtrl($scope, $http) {
+  $scope.show = {};
+  $http.get('/shows').success(function (data) {
+    $scope.shows = data;
+  });
+  $scope.save = function () {
+    $http.post('/show', this.show).success(function (data) {
+      $scope.shows.push(data);
+      return false;
+    });
+  }
 }
 
-function ShowDetailCtrl($scope) {
+// function NewShowCtrl($scope, $http) {
+//   $scope.show = {};
+//   // $scope.save = function () {
+//   //   $http.post('/show', this.show).success(function (data) {
+//   //     console.log(data);
+//   //     return false;
+//   //   });
+//   // }
+// }
 
+function ShowDetailCtrl($scope, $http) {
+  $http.get('/show/:id').success(function (data) {
+    $scope.show = data;
+  });
 }

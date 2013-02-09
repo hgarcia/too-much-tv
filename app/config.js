@@ -1,13 +1,14 @@
 exports.CONFIG = {
   DBS: {
     main: {
-      url: "mongodb://luca-prodan:whhfmh@ds037087.mongolab.com:37087/tmtv",
-      host: "ds037087.mongolab.com",
-      port: 37087,
+      // url: "mongodb://luca-prodan:whhfmh@ds037087.mongolab.com:37087/tmtv",
+      // host: "ds037087.mongolab.com",
+      host: 'localhost',
+      port: 27017,
       dbname: "tmtv",
       prefix: "",
-      username: "luca-prodan",
-      password: "whhfmh"
+      username: "", //luca-prodan",
+      password: "" //whhfmh"
     }
   }
 };

@@ -2,6 +2,7 @@ var passport = require('passport');
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
+var rest = require('./rest');
 
 app.use(express.logger());
 app.use(express.cookieParser());
@@ -36,7 +37,6 @@ hbs.registerHelper('js', js);
 hbs.registerHelper('css', css);
 
 var LocalStrategy = require('passport-local').Strategy;
-
 passport.use(new LocalStrategy(
   function(username, password, done) {
     if (username === 'hernan@dynamicprogrammer.com' &&
@@ -66,6 +66,11 @@ app.post('/', passport.authenticate('local', { failureRedirect: '/', failureFlas
 app.get('/app', ensureAuthenticated, function (req, res) {
    res.render('app');
 });
+
+app.get('/shows', ensureAuthenticated, rest.shows().list);
+app.get('/show/:id', ensureAuthenticated, rest.shows().single);
+app.post('/show', ensureAuthenticated, rest.shows().save);
+app.delete('/show/:id', ensureAuthenticated, rest.shows().remove);
 
 app.get('/logout', function(req, res){
   req.logout();

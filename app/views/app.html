@@ -12,9 +12,14 @@
         <li>
             <a href="#/upcoming">Upcoming</a>
         </li>
+        <li>
+            <a href="/logout">Sign out</a>
+        </li>
     </ul>
-
-    <div ng-view></div>
+    <div class="row">
+        <div class="eight columns centered" ng-view>
+        </div>
+    </div>
 </div>
 {{#extend "scripts"}}
 {{{js "app.js"}}}
