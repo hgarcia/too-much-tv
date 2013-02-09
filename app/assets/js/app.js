@@ -15,27 +15,34 @@ $(document).ready(function () {
 angular.module('tooMuchTv', []).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    when('/unwatched', {templateUrl: '../partials/unwatched.htm', controller: UnwatchedCtrl}).
     when('/upcoming', {templateUrl: '../partials/upcoming.htm', controller: UpcomingCtrl}).
     when('/shows', {templateUrl: '../partials/show-list.htm', controller: ShowListCtrl}).
     when('/shows/:showId', {templateUrl: '../partials/show-details.htm', controller: ShowDetailCtrl}).
-    otherwise({redirectTo: '/unwatched'});
+    otherwise({redirectTo: '/shows'});
 }]);
-
-function UnwatchedCtrl($scope) {
-  $scope.shows = [
-    {"id": 1, "name": "Perception", "season": 1, "episode": "5"},
-    {"id": 2, "name": "Suits",  "season": 2, "episode": "6"},
-    {"id": 3, "name": "White Collar",  "season": 3, "episode": "5"}
-  ];
-}
 
 function UpcomingCtrl($scope) {
 
 }
 
-function ShowListCtrl($scope, $http) {
-  // $scope.show = {};
+function ModalCtrl($scope, $rootScope) {
+  $scope.modal = {
+    title: 'Modal title',
+    lead: 'Modal lead',
+    message: "Modal message"
+  };
+  $rootScope.$on('confirmationRequested', function (ev, msg) {
+    ev.stopPropagation();
+    $scope.modal = msg;
+    var modal = $("#modalMsg").reveal();
+  });
+  $scope.confirm = function (status) {
+    $rootScope.$emit('confirmation', status);
+    $('#modalMsg').trigger('reveal:close');
+  };
+}
+
+function ShowListCtrl($scope, $http, $rootScope) {
   $http.get('/shows').success(function (data) {
     $scope.shows = data;
   });
@@ -47,14 +54,24 @@ function ShowListCtrl($scope, $http) {
     });
   }
   $scope.remove = function (show) {
-    $http.delete('/show/' + show._id).success(function (data) {
-      var index = $scope.shows.indexOf(show);
-      $scope.shows.splice(index, 1);
+    var msg = {
+      title: 'Do you really want to delete the show?',
+      lead: "You can't undo this action",
+      message: ""
+    };
+    $rootScope.$emit('confirmationRequested', msg);
+    $rootScope.$on('confirmation', function (ev, confirmed) {
+      ev.stopPropagation();
+      if (confirmed) {
+        $http.delete('/show/' + show._id).success(function (data) {
+          var index = $scope.shows.indexOf(show);
+          $scope.shows.splice(index, 1);
+        });
+      }
     });
   }
   $scope.orderProp = "name";
 }
-
 
 function ShowDetailCtrl($scope, $http) {
   $http.get('/show/:id').success(function (data) {

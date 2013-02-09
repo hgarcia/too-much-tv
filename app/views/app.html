@@ -1,24 +1,31 @@
 <div ng-app="tooMuchTv">
-    <ul class="nav-bar no-margin-top">
-        <li class="name">
-            <a href="/app">Too much TV</a>
-        </li>
-        <!--<li class="active">
-            <a href="#/unwatched">Un-watched</a>
-        </li>-->
-        <li class="active">
-            <a href="#/shows">Shows</a>
-        </li>
-        <!--<li>
-            <a href="#/upcoming">Upcoming</a>
-        </li>-->
-        <li>
-            <a href="/logout">Sign out</a>
-        </li>
-    </ul>
+    <div class="nav-bar-container">
+        <div class="row">
+            <ul class="nav-bar no-margin-top">
+                <li class="name">
+                    <a href="/app">Too much TV</a>
+                </li>
+                <li class="active">
+                    <a href="#/shows">Shows</a>
+                </li>
+                <li>
+                    <a href="/logout">Sign out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="row">
         <div class="eight columns centered" ng-view>
         </div>
+    </div>
+    <div id="modalMsg" class="reveal-modal medium" ng-controller="ModalCtrl">
+      <h4>[[modal.title]]</h4>
+      <p class="lead">[[modal.lead]]</p>
+      <p>[[modal.message]]</p>
+      <p class="align-right" >
+        <input name="close-yes" type="button" ng-click="confirm(true)" value="Yes">
+        <input name="close-no" type="button" ng-click="confirm(false)" value="No">
+    </p>
     </div>
 </div>
 {{#extend "scripts"}}
