@@ -1,6 +1,11 @@
-var mongo = require('mongodb-wrapper')
-exports.ID = mongo.ObjectID;
-exports.create = function (options, collection) {
-  var db = mongo.db(options.host, options.port, options.dbname, options.prefix, options.username, options.password);
-  return db;
+exports.create = function (config) {
+  var mongo = require('mongoskin');
+  if (config.url) {
+    return mongo.db(config.url + '/?autoReconnect=true');
+  } else {
+    return mongo.db(
+                    config.uris[0] + '/' + config.options.database + '/?autoReconnect=true',
+                    config.options
+                  );
+  }
 };
