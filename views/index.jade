@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  table.table.table-stripped
+    tr
+      th="Show"
+      th="Weekday"
+      th="Current season"
+      th="Next episode"
+      th
+    for show in shows
+      tr
+        td=show.title
+        td=show.dow
+        td=show.season
+        td=show.next_episode
+        td
+          a(href="#", id="" + show.id).watched="[watched]"

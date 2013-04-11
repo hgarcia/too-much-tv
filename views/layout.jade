@@ -1,0 +1,25 @@
+doctype 5
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    meta(name='keywords', content='Tv')
+    title= "Too much tv"
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/bootstrap-responsive.css')
+    link(rel='stylesheet', href='/css/app.css')
+  body
+    div.container
+      h1= "Too much tv"
+      nav.navbar.row-fluid
+        ul.nav.span2.offset10
+          li(title='Upcoming')
+            a(href='/')="Upcoming"
+          li(title='Shows')
+            a(href='/shows')="Shows"
+    div.container
+      block content
+
+    script(src="/js/jquery.min.js")
+    script(src="/js/app.js")
