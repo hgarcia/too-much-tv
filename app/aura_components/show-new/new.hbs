@@ -1,0 +1,30 @@
+<form action="POST">
+  <fieldset>
+    <legend>Add a new show</legend>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" required="true" name="name" placeholder="Enter the show name">
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <input type="text" class="form-control" name="genre" required="true" placeholder="Select the genre">
+    </div>
+    <div class="form-group">
+      <label for="source">Source</label>
+      <input type="text" class="form-control" name="source" required="true" placeholder="Select the source">
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-3">
+          <label for="serie">Serie</label>
+          <input type="number" class="form-control" name="serie" required="true" step="1">
+        </div>
+        <div class="col-lg-3">
+          <label for="episode">Episode</label>
+          <input type="number" class="form-control" name="episode" required="true" step="1">
+        </div>
+      </div>
+    </div>
+    <input type="submit" class="btn btn-default" name="save" value="Save">
+  </fieldset>
+</form>

@@ -1,0 +1,21 @@
+<a href="#/shows/0" data-event="nav.new.show">New Show</a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Source</th>
+      <th>Genre</th>
+      <th>Latest watched</th>
+    </tr>
+  <thead>
+  <tbody>
+    {{#each shows}}
+    <tr>
+      <td><a href="#/shows/{{id}}" data-event="nav.show.edit">{{name}}</a></td>
+      <td>{{genre}}</td>
+      <td>{{source}}</td>
+      <td><a data-event="show.watched" data-id="{{id}}">{{last_watched_serie}} - {{last_watched_episode}}</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
