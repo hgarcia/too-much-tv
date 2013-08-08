@@ -1,4 +1,4 @@
-<form action="POST">
+<form method="POST" action="/api/shows">
   <fieldset>
     <legend>Add a new show</legend>
     <div class="form-group">
@@ -6,20 +6,27 @@
       <input type="text" class="form-control" required="true" name="name" placeholder="Enter the show name">
     </div>
     <div class="form-group">
-      <label for="genre">Genre</label>
-      <input type="text" class="form-control" name="genre" required="true" placeholder="Select the genre">
+      <label for="genres">Genres</label>
+      <select class="chosen-select" name="genres" required="true" multiple data-placeholder="Enter one or more genres">
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
+      </select>
     </div>
     <div class="form-group">
-      <label for="source">Source</label>
-      <input type="text" class="form-control" name="source" required="true" placeholder="Select the source">
+      <label for="sources">Sources</label>
+      <select class="chosen-select" name="sources" required="true" multiple data-placeholder="Enter one or more sources">
+        <option value="netflix">Netflix</option>
+        <option value="streaming">Streaming</option>
+        <option value="bbc-iplayer">BBC iPlayer</option>
+      </select>
     </div>
     <div class="form-group">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <label for="serie">Serie</label>
           <input type="number" class="form-control" name="serie" required="true" step="1">
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
           <label for="episode">Episode</label>
           <input type="number" class="form-control" name="episode" required="true" step="1">
         </div>

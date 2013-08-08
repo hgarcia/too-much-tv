@@ -1,4 +1,4 @@
-define(['text!./new.hbs'], function (template) {
+define(['text!./new.hbs', 'bower_components/chosen/chosen'], function (template, chosen) {
   var templateId = 'new-show';
   return {
     initialize: function () {
@@ -32,6 +32,7 @@ define(['text!./new.hbs'], function (template) {
     render: function (model) {
       var html = this.sandbox.render(templateId, model);
       this.html(html);
+      $('.chosen-select').chosen({width: "100%"});
     }
   };
 });

@@ -1,6 +1,7 @@
 {
   "name": "aura-boilerplate",
   "version": "0.1.0",
+  "directory": "bower_components",
   "dependencies": {
     "jquery": "~1.10.x",
     "aura" : "latest",
