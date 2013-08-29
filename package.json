@@ -13,7 +13,8 @@
     "mongoskin": "0.6.0",
     "moment": "2.1.0",
     "node-resources": "0.1.0",
-    "less": ""
+    "less": "1.4.2",
+    "underscore": "1.5.1"
   },
   "devDependencies": {
     "grunt": "0.4.1",
@@ -32,6 +33,8 @@
     "grunt-bower-hooks": "0.3.0",
     "grunt-usemin": "0.1.12",
     "grunt-open": "0.2.0",
-    "matchdep": "0.1.2"
+    "matchdep": "0.1.2",
+    "mocha": "1.12.0",
+    "spec": "1.0.0"
   }
 }

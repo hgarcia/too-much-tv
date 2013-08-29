@@ -1,7 +1,21 @@
+
+
 module.exports = function (app) {
   app.get('/api/shows', list);
+  app.post('/api/shows', create);
 };
 
+function create(req, res) {
+  var shows = require('./model').init(req.app.db);
+  shows.create(req.body, function (err, result) {
+    res.send(204);
+  });
+}
+
 function list(req, res) {
-  res.send([{id: '1', name: 'Doc Martin', source: 'Netflix', genre: 'Comedy', last_watched_serie: 3, last_watched_episode: 6}]);
+  var shows = require('./model').init(req.app.db);
+  shows.findAll(function (err, results) {
+    console.log(results);
+    res.send(results);
+  });
 }
